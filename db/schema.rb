@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105220453) do
+ActiveRecord::Schema.define(version: 20150108170532) do
+
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "smacktalk_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.text     "content"
@@ -20,9 +28,23 @@ ActiveRecord::Schema.define(version: 20150105220453) do
     t.datetime "updated_at"
   end
 
+  create_table "profiles", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
     t.integer  "following_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "follow_type"
+  end
+
+  create_table "smacktalks", force: true do |t|
+    t.integer  "user_id"
+    t.string   "subject"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,8 @@
+<% @smacktalks.each do |p| %>
+
+<p><%=p.user_id %></p>
+<p><%= link_to(p.subject, smacktalk_path(p)) %></p>
+<p><%=p.content %></p>
+<p><%=p.updated_at %></p>
+
+<% end %>

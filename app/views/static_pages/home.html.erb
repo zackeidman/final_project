@@ -1,4 +1,10 @@
 <% if current_user %>
+
+	<div>
+		<p>Followed by: <%= current_user.followers.count %></p>
+		<p>Following: <%= current_user.users_followed.count %></p>
+	</div>
+
 	<%= link_to "New Post", new_post_path %>
 	<% end %>
 
@@ -15,9 +21,15 @@
 
 
 <% if current_user && p.user != current_user %>
+	<% @relationship = current_user.relationships.where(following_id: p.user.id).first %>
+
+<% if @relationship.blank? %>
 	<%= form_for :relationship, url: relationships_path do |f| %>
 	<%= f.hidden_field :following_id, value: p.user.id %>
 	<%= f.submit 'follow' %>
+	<% end %>
+<% else %>
+	<%= link_to 'unfollow', @relationship, method: :delete %>
 	<% end %>
 <% end %>
 

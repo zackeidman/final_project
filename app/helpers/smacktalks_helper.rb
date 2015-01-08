@@ -1,0 +1,2 @@
+module SmacktalksHelper
+end

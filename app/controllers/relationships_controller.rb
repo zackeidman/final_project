@@ -5,5 +5,8 @@ class RelationshipsController < ApplicationController
 	end
 
 	def destroy
+		@relationship = Relationship.find(params[:id])
+		@relationship.destroy
+		redirect_to root_path
 	end
 end

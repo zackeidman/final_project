@@ -33,10 +33,35 @@ RSpec.describe "FollowingUsers", :type => :request do
  		it { should have_button('follow') }
  		it ' should create connection' do
  			expect {click_button 'follow' }.to change(Relationship, :count).by(1)
- 	end
+ 		end
 
- end
+ 		describe 'after following' do 
+ 			before { click_button 'follow' }
+ 			it { should_not have_button('follow') }
+ 			it { should have_link('unfollow') }
+ 			it 'should unfollow user' do 
+ 				expect { click_link 'unfollow' }.to.change(Relationship, :count).by(-1)
+ 			end
+ 		end
 
-end
+ 		describe 'counting connection' do
+ 			describe 'for following users' do
+ 				before { click_button 'follow' }
+ 				it { should have_content('Following 1') }
+ 			end
+
+ 			describe 'for followed users' do
+ 				before do
+ 					click_button 'follow'
+ 					logout(:following_user)
+ 					login_as(followed_user)
+ 					visit root_path
+ 				end
+
+ 				it { should have_content('Followed by 1') }
+
+			end
+ 		end
+	end
 
 end
