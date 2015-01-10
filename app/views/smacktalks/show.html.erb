@@ -1,1 +1,3 @@
 <%= @smacktalk.content %>
+Comments 
+<%= render partial: "comments/index", locals: { comments: @smacktalk.comments } %>

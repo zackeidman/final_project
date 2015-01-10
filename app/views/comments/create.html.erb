@@ -1,0 +1,11 @@
+<h3>Create Thread</h3>
+<%= form_for [@comment, @smacktalk],
+            :html => { :multipart => true } do |f| %>
+  <%= f.text_field :name, placeholder: "Sujbect" %>
+  <%= f.text_area :desc, placeholder: "Post" %>
+  <%= t.integer :user_id %>
+  <%= t.integer :smacktalk_id %>
+  <%= t.datetime :created_at %>
+
+  <%= f.submit %>
+<% end %>

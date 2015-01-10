@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
    resources :users, only: [:show, :index, :edit]
 
+   resources :comments
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
