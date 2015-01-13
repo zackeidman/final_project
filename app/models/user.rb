@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
     has_many :posts
+    has_many :received_posts, :foreign_key => :recipient_id, :class_name => 'Post'
 
     has_many :smacktalks
 

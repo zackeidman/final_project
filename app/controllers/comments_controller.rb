@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 		@comment.user_id = current_user.id
 		if @comment.save
 			flash[:notice] = "Stop talking and start playing!"
-			redirect_to "/comments"
+			redirect_to @comment.smacktalk
 		else
 			flash[:alert] = @comment.errors.full_messages
 			redirect_to "/comments"
@@ -34,7 +34,7 @@ end
 private
 
   def comment_params
-  	params.require(:comment).permit(:content)
+  	params.require(:comment).permit(:content, :smacktalk_id)
 
   end
 

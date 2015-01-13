@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'static_pages#home'
 
-   resources :smacktalks, only: [:index, :show, :new, :create]
+   resources :smacktalks, only: [:index, :show, :new, :create] do 
+    resources :comments, only: [:create]
+   end
+
+
 
    resources :posts
    resources :relationships, only: [:create, :destroy]

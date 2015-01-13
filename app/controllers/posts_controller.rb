@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 
 		if @post.save
 			flash[:notice] = "You have created a post"
-			redirect_to root_path
+			redirect_to @post.recipient
 		else 
 			flash[:alert] = "Error, Didn't save anything. Please try again."
 			render 'new'
@@ -48,7 +48,7 @@ end
 
 	private
 		def post_params
-			params.require(:post).permit(:content)
+			params.require(:post).permit(:content, :recipient_id)
 		end 
 
 		def allow_owner

@@ -3,7 +3,7 @@
 <table class="table table-striped">
 <thead>
 	<tr>
-		<th>Email</th>
+		<th>User Name</th>
 		<th>Subject</th>
 		<th>Content</th>
 		<th>Updated</th>
@@ -12,7 +12,7 @@
 <tbody>
 <% @smacktalks.each do |smacktalk| %>
 	<tr>
-		<td><%= smacktalk.user.email %></td>
+		<td><%= smacktalk.user.name %></td>
 		<td><%= link_to(smacktalk.subject, smacktalk_path(smacktalk)) %></td>
 		<td><%= smacktalk.content %></td>
 		<td><%= smacktalk.updated_at %></td>
