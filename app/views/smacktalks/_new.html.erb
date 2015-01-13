@@ -1,0 +1,7 @@
+<%= form_for [smacktalk],
+            :html => { :multipart => true } do |f| %>
+  <%= f.text_field :subject, placeholder: "Sujbect" %>
+  <%= f.text_area :content, placeholder: "Post" %>
+
+  <%= f.submit %>
+<% end %>

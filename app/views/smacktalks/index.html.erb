@@ -1,10 +1,23 @@
-<% @smacktalks.each do |p| %>
+<%= render partial: "new", locals: { smacktalk: @smacktalk } %>
 
-<p><%=p.user_id %></p>
-<p><%= link_to(p.subject, smacktalk_path(p)) %></p>
-<p><%=p.content %></p>
-<p><%=p.updated_at %></p>
-
-
+<table class="table table-striped">
+<thead>
+	<tr>
+		<th>Email</th>
+		<th>Subject</th>
+		<th>Content</th>
+		<th>Updated</th>
+	</tr>
+</thead>
+<tbody>
+<% @smacktalks.each do |smacktalk| %>
+	<tr>
+		<td><%= smacktalk.user.email %></td>
+		<td><%= link_to(smacktalk.subject, smacktalk_path(smacktalk)) %></td>
+		<td><%= smacktalk.content %></td>
+		<td><%= smacktalk.updated_at %></td>
+	</tr>
 
 <% end %>
+</tbody>
+</table>

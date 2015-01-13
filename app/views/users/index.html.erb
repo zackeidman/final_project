@@ -1,0 +1,14 @@
+<h3>List of Users</h3>
+<% if @users.empty? %>
+  <strong>THERE ARE NO USERS</strong>
+<% else %>
+  <ul>
+  <% @users.each do |user| %>
+    <li>
+      <a href=<%= "/users/#{ user.id }" %>>
+        <%= user.email %>
+      </a>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

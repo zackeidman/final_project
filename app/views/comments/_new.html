@@ -1,0 +1,8 @@
+<h3>Create Comment</h3>
+<%= form_for [@comment],
+            :html => { :multipart => true } do |f| %>
+  <%= f.text_area :content, placeholder: "Post" %>
+  <%= f.hidden_field :smacktalk_id, value: smacktalk.id %>
+
+  <%= f.submit %>
+<% end %>

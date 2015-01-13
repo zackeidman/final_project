@@ -17,3 +17,6 @@ class User < ActiveRecord::Base
     has_many :followers, through: :inverse_relationships, source: :following_user
 
 end
+
+
+
